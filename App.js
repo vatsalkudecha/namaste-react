@@ -1,3 +1,28 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const parent = React.createElement(
+    "div",
+    { id: "parent" },
+    React.createElement(
+        "div",
+        { id: "child" },
+        [React.createElement("h1", {}, "I am studying Namaste React"),
+         React.createElement("h1", {}, "I am 2nd h1 tag")
+        ]
+    )
+);
+
+// console.log("Here")
+
+// when we want to put this element in react dom we use ReactDOM
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+console.log(parent);    // (object)
+
+// render
+root.render(parent);
+
 // creating element is core react thing
 // const heading = React.createElement(
 //     "h1",
@@ -20,23 +45,3 @@
  If you want to create sibling, instead of passing single child to attribute, 
  put multiple childs in an array
 */
-
-const parent = React.createElement(
-    "div",
-    { id: "parent" },
-    React.createElement(
-        "div",
-        { id: "child" },
-        [React.createElement("h1", {}, "I am 1st h1 tag"),
-         React.createElement("h1", {}, "I am 2nd h1 tag")
-        ]
-    )
-);
-
-// when we want to put this element in react dom we use ReactDOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-console.log(parent);    // (object)
-
-// render
-root.render(parent);
