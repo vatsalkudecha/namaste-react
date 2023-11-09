@@ -1,0 +1,21 @@
+{
+  "name": "food-buddy",
+  "version": "1.0.0",
+  "description": "Food-Buddy is a food ordering app",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest"
+  },
+  "keywords": [
+    "React",
+    "Food",
+    "Ordering"
+  ],
+  "author": "Vatsal Kudecha",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
