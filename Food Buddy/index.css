@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  border: 2px solid gray;
 }
 .logo {
   width: 150px;
@@ -33,6 +34,7 @@
 
 .search{
     padding: 10px;
+    display: flex;
 }
 .restaurant-logo{
     width: 100%;
@@ -42,4 +44,25 @@
   padding: 5px;
   font-size: 15px;
   cursor: pointer;
+}
+
+.shimmer-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  margin: 10px;
+  width: 250px;
+  height: 450px;
+  background-color: #f0f0f0;
+}
+
+.login {
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+.filter {
+  display: flex;
 }

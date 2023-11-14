@@ -67,3 +67,14 @@ Not using keys (not acceptable), throws warning <<<< index as key (acceptable, n
 - \*/
 
 const { resName, cuisine } = props; // Destructuring
+
+-----------------------------------------------------
+
+useEffect -> Another powerfull Hook given by React
+-> It will be called after the entire Component is rendered.
+-> Takes 2 arguments.
+-> useEffect(callback func, Dependency list)
+
+----------------------------------------------------
+- Shimmer UI (For Better UX)
+-> Gives layout of the page
