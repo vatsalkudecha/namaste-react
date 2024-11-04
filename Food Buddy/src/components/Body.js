@@ -1,6 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
-import resList from "../utils/mockData";
+import {useEffect, useState} from "react";
 import Shimmer from "./Shimmer";
 
 // Loaded the page -> Page will be rendered -> API call fetch the data -> Re-render the page
@@ -22,7 +21,7 @@ const Body = () => {
   }, []);
 
   // CORS -> stops the sending the request from our localhost to swiggy origin api
-  // Extenstion to stop CORS: After that we are able to call from our localhost we are calling swiggy's api
+  // Extension to stop CORS: After that we are able to call from our localhost we are calling swiggy's api
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.022505&lng=72.5713621&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -33,10 +32,10 @@ const Body = () => {
     console.log(json);
     // Optional Chaining
     setListOfRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
