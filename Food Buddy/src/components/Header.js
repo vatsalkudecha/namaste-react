@@ -39,7 +39,7 @@ const Header = () => {
               btnNameReact === "Login"
                 ? setBtnNameReact("Logout")
                 : setBtnNameReact("Login");
-              console.log(btnNameReact);
+              // console.log(btnNameReact);
             }}
           >
             {btnNameReact}

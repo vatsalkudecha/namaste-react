@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // Loaded the page -> Page will be rendered -> API call fetch the data -> Re-render the page
 
@@ -24,7 +25,12 @@ const Body = () => {
   // Extension to stop CORS: After that we are able to call from our localhost we are calling swiggy's api
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.022505&lng=72.5713621&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.022505&lng=72.5713621&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+      {
+        headers: {
+          "x-cors-api-key": "temp_16920690e264a84837381e4775354d52",
+        },
+      }
     );
 
     const json = await data.json();
@@ -84,7 +90,9 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
