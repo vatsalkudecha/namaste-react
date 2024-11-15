@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -17,6 +17,17 @@ const App = () => {
   );
 };
 
+/**
+ * Chunking
+ * Code Splitting
+ * Dynamic Bundling
+ * Lazy loading
+ * On demand loading
+ * dynamic import
+ */
+
+const Grocery = lazy(() => import("./components/Grocery"));
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -25,27 +36,35 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
-        errorElement: <Error />
+        errorElement: <Error />,
       },
       {
         path: "/about",
         element: <About />,
-        errorElement: <Error />
+        errorElement: <Error />,
       },
       {
         path: "/contact",
         element: <Contact />,
-        errorElement: <Error />
+        errorElement: <Error />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
+        errorElement: <Error />,
       },
       {
         path: "/restaurants/:resId", // Routes will be unique as per the name(resName) or Id (resId)
         element: <RestaurantMenu />,
-        errorElement: <Error />
+        errorElement: <Error />,
       },
     ],
-    errorElement: <Error />
+    errorElement: <Error />,
   },
-  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

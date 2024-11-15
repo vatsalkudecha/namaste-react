@@ -7,3 +7,5 @@ export const LOGO_URL =
 // Named export -> write export in starting
 
 export const MENU_API_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=23.1929497&lng=72.6155634&restaurantId=";
+
+export const GITHUB_USER_URL = "https://api.github.com/users/vatsalkudecha";

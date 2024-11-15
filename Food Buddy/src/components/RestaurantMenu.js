@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
-import { MENU_API_URL } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-
   const { resId } = useParams();
-  //   console.log(resId);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(MENU_API_URL + resId);
-    const json = await data.json();
-    // console.log(json);
-    setResInfo(json);
-  };
+  const resInfo = useRestaurantMenu(resId);
 
   if (resInfo == null) return <Shimmer />;
 
-  const { name, cuisines, costForTwoMessage, avgRating } = resInfo?.data?.cards[2]?.card?.card?.info || {};
-  const { itemCards } = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card?.card;
+  const { name, cuisines, costForTwoMessage, avgRating } =
+    resInfo?.data?.cards[2]?.card?.card?.info || {};
+  const { itemCards } =
+    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card
+      ?.card;
   //   console.log(itemCards);
 
   return (
@@ -38,7 +28,8 @@ const RestaurantMenu = () => {
         {itemCards.map((items) => (
           <li key={items.card.info.id}>
             {" "}
-            {items.card.info.name} - Rs. {items.card.info.price / 100 || items.card.info.defaultPrice / 100}
+            {items.card.info.name} - Rs.{" "}
+            {items.card.info.price / 100 || items.card.info.defaultPrice / 100}
           </li>
         ))}
       </ul>

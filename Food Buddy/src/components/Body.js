@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 // Loaded the page -> Page will be rendered -> API call fetch the data -> Re-render the page
 
@@ -44,6 +45,14 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <h3>Looks like you are offline! Please check your internet connection</h3>
+    );
+  }
 
   // Conditional Rendering
   // Give Shimmer UI for better UX
@@ -90,7 +99,10 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {filteredRestaurant.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}
